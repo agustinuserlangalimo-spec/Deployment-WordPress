@@ -17,14 +17,6 @@ services:
     networks:
       - backend-net
 
-  redis:
-    image: redis:latest
-    container_name: redis-cache
-    restart: always
-
-    networks:
-      - backend-net
-
   wordpress:
     image: wordpress:latest
     container_name: wordpress-app
@@ -42,11 +34,6 @@ services:
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
       WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
 
-      WP_REDIS_HOST: redis-cache
-      WP_REDIS_PORT: 6379
-
-
-
     volumes:
       - wordpress_data:/var/www/html
 
@@ -54,31 +41,9 @@ services:
       - frontend-net
       - backend-net
 
-  minio:
-    image: minio/minio:latest
-    container_name: minio-storage
-    restart: always
-
-    ports:
-      - "9000:9000"
-      - "9001:9001"
-
-    environment:
-      MINIO_ROOT_USER: admin
-      MINIO_ROOT_PASSWORD: password123
-
-    command: server /data --console-address ":9001"
-
-    volumes:
-      - minio_data:/data
-
-    networks:
-      - backend-net
-
 volumes:
   mysql_data:
   wordpress_data:
-  minio_data:
 
 networks:
   frontend-net:
