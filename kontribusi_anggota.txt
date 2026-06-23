@@ -1,0 +1,18 @@
+PROJECT: Deployment WordPress
+
+Kontribusi Anggota Kelompok
+
+1. Agustinus Erlan Galimo
+   - Membuat repository GitHub
+
+2. Fidelis Roy Nandu
+  -Konfigurasi Docker Compose
+
+3. Kristian Anjas Ama
+   - Deploy WordPress dan MariaDB
+
+4. Yandrikus Gegi Mila Meha
+   - Pengujian Docker Volume
+
+5. Naser Umbu Napu Daku soba
+  - Pengujian
