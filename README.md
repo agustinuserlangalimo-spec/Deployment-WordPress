@@ -1,66 +1,117 @@
-# Deployment-WordPress
-ini merupakan pembuatan Deployment WordPress
+# Deployment WordPress Cloud Computing
 
+## Deskripsi Project
+
+Project ini bertujuan untuk melakukan deployment WordPress menggunakan Docker Container dengan arsitektur yang terdiri dari WordPress, MariaDB, Redis Cache, dan MinIO Object Storage. Project ini dikembangkan sebagai implementasi Cloud Computing yang menerapkan konsep containerization, persistent storage, caching, object storage, serta security hardening menggunakan file .env.
 
 ## Teknologi yang Digunakan
+
 1. Docker
 2. Docker Compose
 3. WordPress
 4. MariaDB
-5. Docker Volume
-6. Docker Network
-7. Git
-8. GitHub
-9. Ubuntu (WSL)
+5. Redis
+6. MinIO
+7. Docker Volume
+8. Docker Network
+9. Git
+10. GitHub
+11. Ubuntu (WSL)
 
-## Cara Menjalankan
-1. Masuk ke folder project
+## Arsitektur Project
+
+Browser
+↓
+WordPress Container
+↓
+Docker Network
+↓
+MariaDB Container
+
+Redis Container (Caching Layer)
+
+MinIO Container (Object Storage)
+
+## Cara Menjalankan Project
+
+### 1. Masuk ke folder project
+
+```bash
 cd ~/Deployment-WordPress
-2. Menjalankan container
-docker compose up -d
-3. Memeriksa status container
-docker ps
-4. Membuka WordPress
+```
 
-Buka browser dan akses:
+### 2. Menjalankan container
+
+```bash
+docker compose up -d
+```
+
+### 3. Memeriksa status container
+
+```bash
+docker ps
+```
+
+### 4. Membuka WordPress
+
+Frontend:
 
 http://localhost:8080
 
-Untuk halaman admin:
+Admin Dashboard:
 
 http://localhost:8080/wp-admin
-5. Menghentikan container
+
+### 5. Membuka MinIO Dashboard
+
+http://localhost:9001
+
+### 6. Menghentikan container
+
+```bash
 docker compose down
+```
 
 ## Progress Project
 
-## mingu 1
-1.Membuat repository GitHub
-2.Membuat file docker-compose.yml
-3.Deploy container WordPress
-4.Deploy container MariaDB
-5.Konfigurasi Docker Volume
-6.Konfigurasi Docker Network
-7.Pengujian akses WordPress
-8.Pengujian penyimpanan data persisten
-9.Push project ke GitHub
+### Minggu 1 - Deployment Dasar
 
-## minggu 2
-1.Implementasi Caching Layer
-Pada minggu kedua, kami berhasil mengimplementasikan Redis sebagai caching layer untuk WordPress. Redis dijalankan menggunakan Docker Container dan diintegrasikan dengan WordPress melalui plugin Redis Object Cache. Setelah konfigurasi berhasil, Redis mampu menyimpan cache query dan objek WordPress sehingga meningkatkan performa akses website.
+* Membuat repository GitHub
+* Membuat file docker-compose.yml
+* Deploy WordPress Container
+* Deploy MariaDB Container
+* Konfigurasi Docker Volume
+* Konfigurasi Docker Network
+* Pengujian akses WordPress
+* Pengujian persistent storage
+* Push project ke GitHub
 
-2.Implementasi Object Storage
-Kami berhasil mengimplementasikan MinIO sebagai Object Storage berbasis S3 yang berjalan pada Docker Container. MinIO digunakan sebagai media penyimpanan file upload WordPress sehingga file tidak lagi hanya tersimpan pada storage lokal container.
+### Minggu 2 - Optimasi Performa & Object Storage
 
-3.Integrasi WordPress dengan Object Storage
-WordPress berhasil dikonfigurasi agar file media yang diunggah melalui dashboard WordPress secara otomatis tersimpan ke MinIO.
+* Implementasi Redis sebagai caching layer
+* Integrasi Redis Object Cache pada WordPress
+* Deploy MinIO Container
+* Pembuatan Bucket Object Storage
+* Integrasi WordPress dengan MinIO
+* Pengujian upload file media
+* Monitoring Redis dan MinIO
+* Dokumentasi repository GitHub
 
-4.Dokumentasi dan Repository
-Seluruh konfigurasi dan perubahan sistem telah didokumentasikan dan diunggah ke repository GitHub kelompok.
+### Minggu 3 - Hardening & Dokumentasi
 
-6.Pelatihan Cloud Computing
-Seluruh anggota kelompok mengikuti course Cloud Computing pada platform bisa.ai serta menyelesaikan seluruh kuis yang disediakan.
+* Memisahkan credential ke file .env
+* Membuat file .env.example
+* Menambahkan .gitignore
+* Dokumentasi project pada README.md
+* Dokumentasi kontribusi anggota
+* Persiapan pengumpulan repository final
 
+## Hasil yang Dicapai
 
-
-
+* WordPress berjalan menggunakan Docker
+* Database MariaDB terintegrasi
+* Data tersimpan menggunakan Docker Volume
+* Redis digunakan sebagai caching layer
+* MinIO digunakan sebagai object storage
+* Konfigurasi keamanan menggunakan file .env
+* Project terdokumentasi dan tersimpan di GitHub
